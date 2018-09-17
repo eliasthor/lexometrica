@@ -1,24 +1,12 @@
-{% load static %}
+{% extends 'lexonews/base.html' %}
 
-<html>
-    <head>
-	<title>Lexometrica News</title>
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet">
-	<link rel="stylesheet" href="{% static 'css/lexonews.css' %}">
-    </head>
-    <body>
-        <div>
-            <h1><a href="/">Lexometrica News</a></h1>
-	</div>
-
-        {% for article in articles %}
-            <div>
-                <p>published: {{ article.published_date }}</p>
-		<h2><a href="">{{ article.headline }}</a> <span class='pub_date'>{{ article.published_date }}</span></h2>
-                <p>{{ article.text|linebreaksbr }}</p>
-            </div>
-        {% endfor %}
-    </body>
-</html>
+{% block content %}
+    {% for article in articles %}
+        <div class="post">
+		<h2>
+	            <a href="{% url 'single_article' pk=article.pk %}">{{ article.headline }}</a>
+		    <span class='pub_date'>{{ article.published_date }}</span></h2>
+            <p>{{ article.text|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
