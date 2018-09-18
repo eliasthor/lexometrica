@@ -19,6 +19,21 @@ def new_article(request):
             article.author = request.user
             article.published_date = timezone.now()
             article.save()
-        else:
-            form = ArticleForm()
+            return redirect('single_article', pk=article.pk)
+    else:
+        form = ArticleForm()
+    return render(request, 'lexonews/edit_article.html', {'form': form})
+
+def edit_article(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    if request.method == "POST":
+        form = ArticleForm(request.POST, instance=article)
+        if form.is_valid():
+            article = form.save(commit=False)
+            article.author = request.user
+            article.published_date = timezone.now()
+            article.save()
+            return redirect('single_article', pk=article.pk)
+    else:
+        form = ArticleForm(instance=article)
     return render(request, 'lexonews/edit_article.html', {'form': form})

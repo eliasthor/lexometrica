@@ -7,6 +7,9 @@
 	    {% if article.published_date %}
 	    <span class='pub_date'>{{ article.published_date }}</span>
 	    {% endif %}
+	    <a class="btn btn_default" href="{% url 'edit_article' pk=article.pk %}">
+		    <span class="glyphicon glyphicon-pencil"></span>
+	    </a>
             </h2>
         <p>{{ article.text|linebreaksbr }}</p>
     </div>
