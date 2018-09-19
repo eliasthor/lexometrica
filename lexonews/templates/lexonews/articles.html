@@ -3,10 +3,13 @@
 {% block content %}
     {% for article in articles %}
         <div class="post">
-		<h2>
-	            <a href="{% url 'single_article' pk=article.pk %}">{{ article.headline }}</a>
-		    <span class='pub_date'>{{ article.published_date }}</span></h2>
-            <p>{{ article.text|linebreaksbr }}</p>
+            <div class="date">
+		{{ article.published_date }}
+	    </div>
+            <h2>
+	        <a href="{% url 'single_article' pk=article.pk %}">{{ article.headline }}</a>
+	    </h2>
+	    <p>{{ article.text|linebreaksbr }}</p>
         </div>
     {% endfor %}
 {% endblock %}
