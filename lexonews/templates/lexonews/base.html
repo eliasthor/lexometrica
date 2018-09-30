@@ -11,7 +11,10 @@
     <body>
         <div class="page-header">
 	    {% if user.is_authenticated %}
-	        <a href="{% url 'new_article' %}" class="top-menu"><span>+</span></a>
+	    <a href="{% url 'logout' %}" class="top-menu-small"><span>Útskráning ({{user.username}})</span></a>
+                <a href="{% url 'new_article' %}" class="top-menu-small"><span>Skrifa nýja frétt</span></a>
+	    {% else %}
+	        <a href="{% url 'login' %}" class="top-menu-small"><span>Innskráning</span></a>
 	    {% endif %}
             <h1><a href="/">Lexometrica News</a></h1>
 	</div>
