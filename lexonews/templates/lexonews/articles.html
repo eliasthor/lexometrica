@@ -4,7 +4,7 @@
     {% for article in articles %}
         <div class="post">
             <div class="date">
-		{{ article.published_date }}
+		{{ article.published_date|date:'d-b-Y G:i' }}
 	    </div>
             <h2>
 	        <a href="{% url 'single_article' pk=article.pk %}">{{ article.headline }}</a>
