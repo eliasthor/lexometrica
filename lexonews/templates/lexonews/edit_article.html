@@ -1,9 +1,13 @@
 {% extends 'lexonews/base.html' %}
 
 {% block content %}
-    <h1>New Article</h1>
+    {% if form.instance.headline %}
+    <h1>Breya frétt</h1>
+    {% else %}
+    <h1>Ný frétt</h1>
+    {% endif %}
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
-	<button type="submit" class="save btn btn-default">Vista</button>
+	<button type="submit" class="save btn btn-lexo">Vista</button>
     </form>
 {% endblock %}

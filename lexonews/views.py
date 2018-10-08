@@ -20,7 +20,6 @@ def new_article(request):
         if form.is_valid():
             article = form.save(commit=False)
             article.author = request.user
-            #article.published_date = timezone.now()
             article.save()
             return redirect('single_article', pk=article.pk)
     else:
@@ -35,7 +34,6 @@ def edit_article(request, pk):
         if form.is_valid():
             article = form.save(commit=False)
             article.author = request.user
-            #article.published_date = timezone.now()
             article.save()
             return redirect('single_article', pk=article.pk)
     else:
@@ -52,3 +50,9 @@ def publish_article(request, pk):
    article = get_object_or_404(Article, pk=pk)
    article.publish()
    return redirect('single_article', pk=article.pk)
+
+@login_required
+def remove_article(request, pk):
+   article = get_object_or_404(Article, pk=pk)
+   article.delete()
+   return redirect('articles')

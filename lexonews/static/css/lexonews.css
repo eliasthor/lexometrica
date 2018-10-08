@@ -56,8 +56,23 @@ h1, h2, h3, h4 {
     text-decoration: none;
 }
 
+.btn-lexo, .btn-lexo:active, .btn-lexo:hover, .btn-lexo:visited {
+    border-radius: 10px;
+    padding: 5px;
+    color: #ffffff;
+    background-color: #ff9400;
+    /*float: right;*/
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 10pt;
+    text-decoration: none;
+}
+
+.headline, .headline:active, .headline:hover, .headline:visited {
+    color: #ff9400;
+}    
 .post {
     margin-bottom: 70px;
+    font-family: 'Open Sans Condensed', sans-serif;
 }
 
 .post h1 a, .post h1 a:visited {

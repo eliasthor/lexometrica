@@ -2,9 +2,16 @@ from django.db import models
 from django.utils import timezone
 
 class Article(models.Model):
-    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    headline = models.CharField(max_length=200)
-    text = models.TextField()
+    author = models.ForeignKey(
+        'auth.User',
+        on_delete=models.CASCADE,
+        verbose_name="höfundur",
+        )
+    headline = models.CharField(
+        "fyrirsögn",
+        max_length=200,
+        )
+    text = models.TextField("Meginmál")
     created_date = models.DateTimeField(
         default=timezone.now)
     published_date = models.DateTimeField(
