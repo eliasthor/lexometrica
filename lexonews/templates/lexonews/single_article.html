@@ -1,0 +1,22 @@
+{% extends 'lexonews/base.html' %}
+
+{% block content %}
+    <div>
+	{% if article.published_date %}
+	    <div class="date">
+		{{ article.published_date|date:'d-b-Y G:i' }}
+	    </div>
+	{% endif %}
+	<h2>
+            <a class="headline" href="{% url 'single_article' pk=article.pk %}">{{ article.headline }}</a>
+        </h2>
+        <p class="post">{{ article.text|linebreaksbr }}</p>
+	    {% if user.is_authenticated %}
+		<a class="btn btn-lexo" href="{% url 'edit_article' pk=article.pk %}">Breyta</a>
+	        {% if not article.published_date %}
+	            <a class="btn btn-lexo" href="{% url 'publish_article' pk=article.pk %}">Gefa út</a>
+	        {% endif %}
+	        <a class="btn btn-lexo" href="{% url 'remove_article' pk=article.pk %}">Eyða</a>
+	    {% endif %}
+    </div>
+{% endblock %}
