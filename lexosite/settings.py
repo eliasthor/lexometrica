@@ -26,7 +26,9 @@ SECRET_KEY = '3b2zm^l%oxm+oo)ggeii%x+j$x$b4kp*czk1o7gi7%0qn!+*d+'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+INTERNAL_IPS = [
+        '127.0.0.1',
+]
 
 # Application definition
 
@@ -37,10 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'lexonews',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
